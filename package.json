@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Namaste React",
   "scripts": {
-    "test": "jest",
+    "test": "jest --no-cache",
     "start": "parcel index.html"
   },
   "repository": {
