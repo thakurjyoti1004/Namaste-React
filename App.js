@@ -1,3 +1,7 @@
-const heading = React.createElement("h1",{id:"heading"},"Hello From React!");
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+
+const heading = React.createElement("div",{id:"parent"},"This is the parent div",[React.createElement("div",{id:"child-1"},"Child div 1"),[React.createElement("h1",{id:"header"},"Heading 1"), React.createElement("h2",{id:"header"},"Heading 2")]])
+const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+rootElement.render(heading);
