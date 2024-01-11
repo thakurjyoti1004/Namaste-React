@@ -2,3 +2,15 @@
     color: red;
     font-style: italic;
 }
+#parent{
+    color:red;
+    font-size: 40px;
+}
+#child-1{
+    color:blue;
+}
+#header{
+    font-style: italic;
+    color: black;
+    font-size: 33px;
+}
