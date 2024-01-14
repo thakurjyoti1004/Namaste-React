@@ -1,4 +1,8 @@
-#heading{
+body {
+  margin: 0;
+}
+
+/* #heading{
     color: red;
     font-style: italic;
 }
@@ -13,4 +17,37 @@
     font-style: italic;
     color: black;
     font-size: 33px;
+} */
+
+/* header component */
+#container {
+  display: flex;
+  max-height: 250px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: rgba(228, 228, 228, 0.6);
+  justify-content: flex-start;
+}
+
+
+.search-bar {
+  width: 300px;
+  height: 35px;
+  border-radius: 8px;
+  margin-right: 50px;
+  font-size: 18px;
+  text-align: left;
+  padding: 0 10px;
+  border: 2px solid rgb(68, 68, 68);
+  justify-content: center
+}
+
+.search-bar:focus {
+  border: 3px solid rgb(126, 126, 241);
+  outline: none !important;
+}
+
+.user-icon{
+  justify-content: flex-end;
 }
