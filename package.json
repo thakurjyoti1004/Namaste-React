@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Namaste React",
   "scripts": {
-    "test": "jest",
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "test": "jest --no-cache",
+    "start": "parcel index.html"
   },
   "repository": {
     "type": "git",

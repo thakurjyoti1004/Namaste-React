@@ -1,0 +1,21 @@
+#heading {
+  color: red;
+  font-style: italic;
+}
+
+#parent {
+  color: red;
+  font-size: 40px;
+}
+
+#child-1 {
+  color: #00f;
+}
+
+#header {
+  color: #000;
+  font-size: 33px;
+  font-style: italic;
+}
+
+/*# sourceMappingURL=index.9e4c6fd2.css.map */
