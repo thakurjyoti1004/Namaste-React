@@ -22,31 +22,107 @@ const Header = () => {
 };
 
 const RestaurantCard = (props) => {
-  const { resName, cuisine } = props;
+  const { resData } = props;
   return (
     <div className="restaurant-card">
       <img
         className="restaurant-image"
-        src="https://d4t7t8y8xqo0t.cloudfront.net/resized/720X480/group%2F1542%2Fmenu020170930184033.jpg"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resObj.cloudinaryImageId
+        }
         alt="res-img"
       />
-      <h3>{resName}</h3>
-      <h4>{cuisine}</h4>
-      <h4>4.5 Stars</h4>
-      <h4>38 min.</h4>
+      <h3>{resObj.name}</h3>
+      <h4>{resObj.cuisines.join(", ")}</h4>
+      <h4>{resObj.avgRatingString} stars</h4>
+      <h4>{resObj.sla.slaString}</h4>
+      <h4>{resObj.costForTwo}</h4>
     </div>
   );
 };
+
+const resObj = {
+  id: "337335",
+  name: "Kannur food kitchen",
+  cloudinaryImageId: "a27weqanhnszqiuzsoik",
+  locality: "1st  Stage",
+  areaName: "BTM Layout",
+  costForTwo: "₹200 for two",
+  cuisines: ["Kerala", "Biryani", "Beverages"],
+  avgRating: 4,
+  parentId: "114756",
+  avgRatingString: "4.0",
+  totalRatingsString: "10K+",
+  sla: {
+    deliveryTime: 27,
+    lastMileTravel: 2.9,
+    serviceability: "SERVICEABLE",
+    slaString: "27 mins",
+    lastMileTravelString: "2.9 km",
+    iconType: "ICON_TYPE_EMPTY",
+  },
+  availability: {
+    nextCloseTime: "2024-01-19 04:00:00",
+    opened: true,
+  },
+  badges: {
+    textExtendedBadges: [
+      {
+        iconId: "guiltfree/GF_Logo_android_3x",
+        shortDescription: "options available",
+        fontColor: "#7E808C",
+      },
+    ],
+  },
+  isOpen: true,
+  type: "F",
+  badgesV2: {
+    entityBadges: {
+      imageBased: {},
+      textBased: {},
+      textExtendedBadges: {
+        badgeObject: [
+          {
+            attributes: {
+              description: "",
+              fontColor: "#7E808C",
+              iconId: "guiltfree/GF_Logo_android_3x",
+              shortDescription: "options available",
+            },
+          },
+        ],
+      },
+    },
+  },
+  aggregatedDiscountInfoV3: {
+    header: "50% OFF",
+    discountTag: "FLAT DEAL",
+  },
+  orderabilityCommunication: {
+    title: {},
+    subTitle: {},
+    message: {},
+    customIcon: {},
+  },
+  differentiatedUi: {
+    displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+    differentiatedUiMediaDetails: {
+      mediaType: "ADS_MEDIA_ENUM_IMAGE",
+      lottie: {},
+      video: {},
+    },
+  },
+  reviewsSummary: {},
+  displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+  restaurantOfferPresentationInfo: {},
+};
+
 const Body = () => {
   return (
     <div className="body-container">
       <div className="search-bar">Search bar</div>
       <div className="restaurant-container">
-        <RestaurantCard
-          resName="Meghna foods"
-          cuisine="Biryani, North Indian, Asian"
-        />
-        <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" />
+        <RestaurantCard resData={resObj} />
       </div>
     </div>
   );
