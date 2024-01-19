@@ -1,54 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 
-import Logo from "./logos/fooodLogo.png";
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={Logo} alt="logo" />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  const { resData } = props;
-  const { name, cuisines, avgRatingString, costForTwo, cloudinaryImageId} =
-    resData.info;
-  const { deliveryTime } = resData.info.sla;
-
-  return (
-    <div className="restaurant-card">
-      <img
-        className="restaurant-image"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-        alt="res-img"
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRatingString} stars</h4>
-      <h4>{deliveryTime} mins</h4>
-      <h4>{costForTwo}</h4>
-    </div>
-  );
-};
-
-const resList = [
-  {
-    info: {
+[{
+[ {
       id: "5934",
       name: "Burger King",
       cloudinaryImageId: "e33e1d3ba7d6b2bb0d45e1001b731fcf",
@@ -1378,27 +1330,3 @@ const resList = [
     },
   },
 ];
-
-const Body = () => {
-  return (
-    <div className="body-container">
-      <div className="search-bar">Search bar</div>
-      <div className="restaurant-container">
-      {resList.map((restaurants) => <RestaurantCard key={restaurants.info.id} resData={restaurants} />
-      )}
-      </div>
-    </div> 
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
