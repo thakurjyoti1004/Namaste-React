@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Logo from "./logos/fooodLogo.png";
+import Logo from "../logos/fooodLogo.png";
 
 const Header = () => {
   return (
@@ -23,7 +23,7 @@ const Header = () => {
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-  const { name, cuisines, avgRatingString, costForTwo, cloudinaryImageId} =
+  const { name, cuisines, avgRatingString, costForTwo, cloudinaryImageId } =
     resData.info;
   const { deliveryTime } = resData.info.sla;
 
@@ -38,10 +38,12 @@ const RestaurantCard = (props) => {
         alt="res-img"
       />
       <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRatingString} stars</h4>
-      <h4>{deliveryTime} mins</h4>
-      <h4>{costForTwo}</h4>
+      <div className="primary-text">
+        <span>★ {avgRatingString}</span>
+        <span> • {deliveryTime} mins.</span>
+      </div>
+      <span className="cuisines">{cuisines.join(", ")}</span>
+      {/* <h4>{costForTwo}</h4> */}
     </div>
   );
 };
@@ -1384,10 +1386,11 @@ const Body = () => {
     <div className="body-container">
       <div className="search-bar">Search bar</div>
       <div className="restaurant-container">
-      {resList.map((restaurants) => <RestaurantCard key={restaurants.info.id} resData={restaurants} />
-      )}
+        {resList.map((restaurants) => (
+          <RestaurantCard key={restaurants.info.id} resData={restaurants} />
+        ))}
       </div>
-    </div> 
+    </div>
   );
 };
 

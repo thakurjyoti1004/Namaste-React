@@ -25,27 +25,40 @@
 }
 
 .restaurant-container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
+  display: grid;
+  margin: 10px 20px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 32px;
 }
 
 .restaurant-card {
-  width: 315px;
-  height: 465px;
-  background-color: rgb(223, 219, 219);
-  margin: 10px;
-  padding: 5px;
   border-radius: 5px;
-  line-height: 15px;
+  transition: all 0.05s ease 0s;
 }
 .restaurant-card:hover {
-  border: black solid 1px;
-  border-radius: 5px;
   cursor: pointer;
+  transform: scale(0.95, 0.95);
 }
 .restaurant-image {
-  width: 290px;
+  width: 100%;
+  object-fit: cover;
   height: 200px;
-  padding: 5px;
+  border-radius: 20px;
+}
+.cuisines {
+  white-space: nowrap;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: lighter;
+  display: inline-block;
+  margin-top: 6px;
+}
+.primary-text {
+  font-weight: bolder;
+}
+
+h3,
+h4 {
+  margin: 6px 0px;
 }
