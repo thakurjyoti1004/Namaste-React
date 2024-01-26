@@ -62,3 +62,15 @@ h3,
 h4 {
   margin: 6px 0px;
 }
+
+.filter-btn {
+  border: 1px solid rgb(207, 205, 205);
+  border-radius: 20px;
+  width: 150px;
+  text-align: center;
+  height: 20px;
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
