@@ -106,3 +106,15 @@ h4 {
   height: 15px;
   background-color: rgb(241, 239, 239);
 }
+.login-btn{
+  width:65px;
+  height: 30px;
+  margin: 22px 0px;
+  text-align: center;
+  padding:2px;
+  background-color: rgb(52, 52, 248);
+  font-size: 18px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
