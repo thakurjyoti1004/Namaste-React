@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./shimmer";
 
 const Body = () => {
   const [res, setTopRatedRes] = useState([]);
@@ -15,7 +16,8 @@ const Body = () => {
     const apiJsonData = await apiData.json();
 
     setTopRatedRes(
-      apiJsonData?.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+      apiJsonData?.data.cards[4].card.card.gridElements.infoWithStyle
+        .restaurants
     );
   };
 
@@ -27,6 +29,10 @@ const Body = () => {
     });
     setTopRatedRes(topRatedRestaurant);
   };
+
+  if (res.length === 0) {
+    return <div><Shimmer/></div>;
+  }
 
   return (
     <div className="body-container">
