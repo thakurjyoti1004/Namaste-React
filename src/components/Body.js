@@ -29,7 +29,7 @@ const Body = () => {
     );
     const apiJsonData = await apiData.json();
     setRes(
-      apiJsonData?.data.cards[4].card.card.gridElements.infoWithStyle
+      apiJsonData?.data.cards[4].card.card.gridElements.infoWithStyle 
         .restaurants
     );
   };
@@ -44,7 +44,7 @@ const Body = () => {
   };
 
   const handleSearch = () => {
-    if (!inputValue) {
+    if (inputValue === "") {
       fetchData();
     }
 

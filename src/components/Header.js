@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Logo from "../../logos/fooodLogo.png";
+
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
 

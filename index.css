@@ -128,4 +128,5 @@ h4 {
 .search-btn {
   height: 29px;
   border-radius: 5px;
+  cursor: pointer;
 }
