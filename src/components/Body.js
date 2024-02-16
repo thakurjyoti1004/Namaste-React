@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [res, setRes] = useState([]);
@@ -29,8 +30,8 @@ const Body = () => {
     );
     const apiJsonData = await apiData.json();
     setRes(
-      apiJsonData?.data.cards[4].card.card.gridElements.infoWithStyle 
-        .restaurants
+      apiJsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
     );
   };
 
