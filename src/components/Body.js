@@ -88,7 +88,12 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {res.map((restaurants) => (
-          <RestaurantCard key={restaurants.info.id} resData={restaurants} />
+          <Link
+            key={restaurants.info.id}
+            to={`/restaurantMenu/${restaurants.info.id}`}
+          >
+            <RestaurantCard resData={restaurants} />
+          </Link>
         ))}
       </div>
     </div>
