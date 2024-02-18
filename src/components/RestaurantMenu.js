@@ -10,14 +10,17 @@ const RestaurantMenu = () => {
     restaurantMenuFetchedData();
   }, []);
 
+
+  // Client-side Routing
+
   const restaurantMenuFetchedData = async () => {
     const fetchedData = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId="+resId
+      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" +
+        resId
     );
     const jsonData = await fetchedData.json();
 
     setResMenuList(jsonData.data);
-    console.log(jsonData.data, "json data");
   };
 
   if (!resMenuList) {
@@ -39,8 +42,8 @@ const RestaurantMenu = () => {
       <h3>{city}</h3>
       {itemCards.map((list) => {
         return (
-          <div className="menu-card">
-            <div className="menu-details" key={list.card.info.id}>
+          <div className="menu-card" key={list.card.info.id}>
+            <div className="menu-details">
               <h2>{list.card.info.name}</h2>
               <h4>{list.card.info.price}</h4>
               <p>{list.card.info.description}</p>
