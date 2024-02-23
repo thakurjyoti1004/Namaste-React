@@ -144,3 +144,8 @@ h4 {
 .menu-details {
   padding: 15px;
 }
+
+.user-card {
+  border: black solid 1px;
+  margin-bottom: 15px;
+}
