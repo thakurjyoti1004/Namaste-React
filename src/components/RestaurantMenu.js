@@ -10,7 +10,6 @@ const RestaurantMenu = () => {
     restaurantMenuFetchedData();
   }, []);
 
-
   // Client-side Routing
 
   const restaurantMenuFetchedData = async () => {
