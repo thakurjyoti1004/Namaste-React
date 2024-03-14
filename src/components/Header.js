@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Logo from "../../logos/fooodLogo.png";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
@@ -8,6 +9,8 @@ const Header = () => {
   const handleLoginBtn = () => {
     loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");
   };
+
+  const onlineStatus = useOnlineStatus();
 
   return (
     <div className="header">
@@ -29,6 +32,7 @@ const Header = () => {
           <button className="login-btn" onClick={handleLoginBtn}>
             {loginBtn}
           </button>
+          {onlineStatus===false ? <li>🔴 Offline</li> : <li>🔵 Online</li>}
         </ul>
       </div>
     </div>
