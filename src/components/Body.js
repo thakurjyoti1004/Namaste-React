@@ -72,8 +72,8 @@ const Body = () => {
 
   return (
     <div className="body-container">
-      <div className="filter">
-        <div className="search-container">
+      <div className="filter flex">
+        <div className="search-container mr-4 mt-3">
           <input
             type="search"
             name="search-bar"
@@ -87,11 +87,14 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="filter-btn" onClick={handleClick}>
+        <div
+          className="filter-btn border border-solid border-gray-400 rounded-lg h-8 w-52 cursor-pointer text-center p-1 mt-3 text-base"
+          onClick={handleClick}
+        >
           Top Rated Restaurant
         </div>
       </div>
-      <div className="restaurant-container">
+      <div className="restaurant-container grid my-10 mx-20 gap-8 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
         {res.map((restaurants) => (
           <Link
             key={restaurants.info.id}

@@ -7,19 +7,21 @@ const RestaurantCard = (props) => {
   return (
     <div className="restaurant-card">
       <img
-        className="restaurant-image"
+        className="restaurant-image w-full object-cover h-52 rounded-lg"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
           cloudinaryImageId
         }
         alt="res-img"
       />
-      <h3>{name}</h3>
-      <div className="primary-text">
+      <h3 className="my-2">{name}</h3>
+      <div className="primary-text font-bold">
         <span>★ {avgRating}</span>
         <span> • {deliveryTime} mins.</span>
       </div>
-      <span className="cuisines">{cuisines.join(", ")}</span>
+      <span className="cuisines w-52 overflow-hidden whitespace-nowrap text-ellipsis mt-2 inline-block font-light">
+        {cuisines.join(", ")}
+      </span>
       {/* <h4>{costForTwo}</h4> */}
     </div>
   );
