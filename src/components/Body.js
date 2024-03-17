@@ -73,17 +73,20 @@ const Body = () => {
   return (
     <div className="body-container">
       <div className="filter flex">
-        <div className="search-container mr-4 mt-3">
+        <div className="search-container mr-4 mt-1 p-1">
           <input
             type="search"
             name="search-bar"
-            className="search-bar"
+            className="search-bar m-1 border rounded-md h-8"
             value={inputValue}
             onChange={(e) => {
               setInputValue(e.target.value);
             }}
           />
-          <button className="search-btn" onClick={handleSearch}>
+          <button
+            className="search-btn h-8 text-base text-center cursor-pointer border rounded-md"
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>
