@@ -5,9 +5,9 @@ const RestaurantCard = (props) => {
   const { deliveryTime } = resData.info.sla;
 
   return (
-    <div className="restaurant-card">
+    <div className="restaurant-card rounded-b-lg bg-slate-100">
       <img
-        className="restaurant-image w-full object-cover h-52 rounded-lg"
+        className="restaurant-image w-full object-cover h-52 rounded-t-lg"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
           cloudinaryImageId
