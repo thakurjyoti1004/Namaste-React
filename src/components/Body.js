@@ -77,21 +77,21 @@ const Body = () => {
           <input
             type="search"
             name="search-bar"
-            className="search-bar m-1 border rounded-md h-8"
+            className="search-bar m-1 border rounded-md h-8 border-black"
             value={inputValue}
             onChange={(e) => {
               setInputValue(e.target.value);
             }}
           />
           <button
-            className="search-btn h-8 text-base text-center cursor-pointer border rounded-md"
+            className="search-btn h-8 px-1 text-base text-center cursor-pointer border rounded-md border-black"
             onClick={handleSearch}
           >
             Search
           </button>
         </div>
         <div
-          className="filter-btn border border-solid border-gray-400 rounded-lg h-8 w-52 cursor-pointer text-center p-1 mt-3 text-base"
+          className="filter-btn border border-solid border-black rounded-lg h-8 w-52 cursor-pointer text-center p-1 mt-3 text-base"
           onClick={handleClick}
         >
           Top Rated Restaurant

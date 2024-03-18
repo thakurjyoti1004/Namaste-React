@@ -30,7 +30,7 @@ class UserClass extends React.Component {
     // console.log("Child Render");
     const { name, location, email } = this.state.userInfo;
     return (
-      <div className="user-card">
+      <div className="user-card m-2 border border-solid border-black">
         {/* <h1>Count:{this.state.count}</h1>
         <button
           onClick={() => {

@@ -22,17 +22,20 @@ const RestaurantMenu = () => {
     resMenuList.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card
       .card;
   return (
-    <div className="menu-container">
-      <h1>{name}</h1>
-      <h2>{cuisines.join(", ")}</h2>
-      <h3>{city}</h3>
+    <div className="menu-container block m-5 justify-center mr-4">
+      <h1 className="font-bold ml-24 mt-2">{name}</h1>
+      <h2 className="font-bold ml-24">{cuisines.join(", ")}</h2>
+      <h3 className="font-bold ml-24">{city}</h3>
       {itemCards.map((list) => {
         return (
-          <div className="menu-card" key={list.card.info.id}>
-            <div className="menu-details">
-              <h2>{list.card.info.name}</h2>
-              <h4>{list.card.info.price}</h4>
-              <p>{list.card.info.description}</p>
+          <div
+            className="menu-card flex flex-row justify-between border border-solid border-black my-3 mx-24 max-h-40"
+            key={list.card.info.id}
+          >
+            <div className="menu-details p-4">
+              <h2 className="font-bold">{list.card.info.name}</h2>
+              <h4 className="font-bold">₹ {list.card.info.price / 100}</h4>
+              <p className="font-light">{list.card.info.description}</p>
             </div>
             <img
               src={

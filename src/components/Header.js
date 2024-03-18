@@ -32,9 +32,14 @@ const Header = () => {
           <li className="p-2 text-lg">
             <Link to="/groccery">Groccery</Link>
           </li>
-          <button className="login-btn" onClick={handleLoginBtn}>
-            {loginBtn}
-          </button>
+          <li className="p-2 text-lg">
+            <button
+              className="login-btn bg-green-600 px-2 rounded-xl"
+              onClick={handleLoginBtn}
+            >
+              {loginBtn}
+            </button>
+          </li>
           <div className="p-2 text-lg">
             {onlineStatus === false ? <li>🔴 Offline</li> : <li>🔵 Online</li>}
           </div>
