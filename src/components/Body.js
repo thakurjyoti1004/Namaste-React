@@ -84,7 +84,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn h-8 px-1 text-base text-center cursor-pointer border rounded-md border-black"
+            className="search-btn bg-green-500 h-8 px-1 text-base text-center cursor-pointer border rounded-md border-black"
             onClick={handleSearch}
           >
             Search
