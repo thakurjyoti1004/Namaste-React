@@ -3,7 +3,6 @@ const RestaurantCard = (props) => {
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
     resData.info;
   const { deliveryTime } = resData.info.sla;
-
   return (
     <div className="restaurant-card rounded-b-lg bg-slate-100 transition duration-150 ease-in-out hover:scale-95">
       <img
@@ -19,12 +18,25 @@ const RestaurantCard = (props) => {
         <span>★ {avgRating}</span>
         <span> • {deliveryTime} mins.</span>
       </div>
-      <span className="cuisines w-52 overflow-hidden whitespace-nowrap text-ellipsis mt-2 pl-2 inline-block font-light">
+      <span className="cuisines whitespace-nowrap w-52 overflow-hidden  text-ellipsis mt-2 pl-2 inline-block font-light">
         {cuisines.join(", ")}
       </span>
       {/* <h4>{costForTwo}</h4> */}
     </div>
   );
+};
+
+export const withPromotedLabel = (Component) => {
+  return (props) => {
+    const { header, subHeader } = props.resData.info.aggregatedDiscountInfoV3;
+
+    return (
+      <div>
+        <label>{header}</label>
+        <Component {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

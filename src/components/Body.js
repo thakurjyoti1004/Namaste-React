@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -34,6 +34,8 @@ const Body = () => {
       apiJsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+
+    console.log(apiJsonData, 222);
   };
 
   const onlineStatus = useOnlineStatus();
@@ -70,6 +72,9 @@ const Body = () => {
     );
   }
 
+  console.log(res, 111);
+  const RestaurantCardWithDiscountOffer = withPromotedLabel(RestaurantCard);
+
   return (
     <div className="body-container">
       <div className="filter flex">
@@ -90,12 +95,12 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div
-          className="filter-btn border border-solid border-black rounded-lg h-8 w-52 cursor-pointer text-center p-1 mt-3 text-base"
+        <button
+          className="filter-btn border border-solid border-black rounded-lg h-8 w-52 cursor-pointer text-center p-1 mt-3 bg-blue-100 text-base"
           onClick={handleClick}
         >
           Top Rated Restaurant
-        </div>
+        </button>
       </div>
       <div className="restaurant-container grid my-10 mx-20 gap-8 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
         {res.map((restaurants) => (
@@ -103,9 +108,13 @@ const Body = () => {
             key={restaurants.info.id}
             to={`/restaurantMenu/${restaurants.info.id}`}
           >
-            <RestaurantCard resData={restaurants} />
+            {restaurants.info.aggregatedDiscountInfoV3.header ? (
+              <RestaurantCardWithDiscountOffer resData={restaurants} />
+            ) : (
+              <RestaurantCard resData={restaurants} />
+            )}
           </Link>
-        ))}
+        ))} 
       </div>
     </div>
   );
