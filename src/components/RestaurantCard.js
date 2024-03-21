@@ -4,7 +4,7 @@ const RestaurantCard = (props) => {
     resData.info;
   const { deliveryTime } = resData.info.sla;
   return (
-    <div className="restaurant-card rounded-b-lg bg-slate-100 transition duration-150 ease-in-out hover:scale-95">
+    <div className="restaurant-card rounded-b-lg bg-slate-100 transition duration-150 ease-in-out hover:scale-95 z-0">
       <img
         className="restaurant-image w-full object-cover h-52 rounded-t-lg"
         src={
@@ -31,8 +31,10 @@ export const withPromotedLabel = (Component) => {
     const { header, subHeader } = props.resData.info.aggregatedDiscountInfoV3;
 
     return (
-      <div>
-        <label>{header}</label>
+      <div className="relative">
+        <label className="border border-black text-black-100 font-bold cursor-pointer rounded-r-3xl rounded-tl-2xl p-1  ml-2 mb-2 bg-white absolute bottom-24 left-0 hover: z-10">
+          {header} {subHeader}
+        </label>
         <Component {...props} />
       </div>
     );

@@ -114,7 +114,7 @@ const Body = () => {
               <RestaurantCard resData={restaurants} />
             )}
           </Link>
-        ))} 
+        ))}
       </div>
     </div>
   );
