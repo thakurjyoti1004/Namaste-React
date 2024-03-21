@@ -32,7 +32,7 @@ export const withPromotedLabel = (Component) => {
 
     return (
       <div className="relative">
-        <label className="border border-black text-black-100 font-bold cursor-pointer rounded-r-3xl rounded-tl-2xl p-1  ml-2 mb-2 bg-white absolute bottom-24 left-0 hover: z-10">
+        <label className="border border-black text-black-100 font-bold cursor rounded-r-3xl rounded-tl-2xl p-1  ml-2 mb-2 bg-white absolute bottom-24 left-0 hover: z-10">
           {header} {subHeader}
         </label>
         <Component {...props} />

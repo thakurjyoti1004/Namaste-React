@@ -3,6 +3,7 @@ import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import RestaurantCategory from "./RestaurantCategory";
 
 const Body = () => {
   const [res, setRes] = useState([]);
@@ -35,7 +36,6 @@ const Body = () => {
         ?.restaurants
     );
 
-    console.log(apiJsonData, 222);
   };
 
   const onlineStatus = useOnlineStatus();
@@ -72,7 +72,6 @@ const Body = () => {
     );
   }
 
-  console.log(res, 111);
   const RestaurantCardWithDiscountOffer = withPromotedLabel(RestaurantCard);
 
   return (
@@ -108,7 +107,7 @@ const Body = () => {
             key={restaurants.info.id}
             to={`/restaurantMenu/${restaurants.info.id}`}
           >
-            {restaurants.info.aggregatedDiscountInfoV3.header ? (
+            {restaurants?.info?.aggregatedDiscountInfoV3?.header ? (
               <RestaurantCardWithDiscountOffer resData={restaurants} />
             ) : (
               <RestaurantCard resData={restaurants} />
