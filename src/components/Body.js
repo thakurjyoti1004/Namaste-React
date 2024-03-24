@@ -35,7 +35,6 @@ const Body = () => {
       apiJsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-
   };
 
   const onlineStatus = useOnlineStatus();
@@ -75,33 +74,31 @@ const Body = () => {
   const RestaurantCardWithDiscountOffer = withPromotedLabel(RestaurantCard);
 
   return (
-    <div className="body-container">
-      <div className="filter flex">
-        <div className="search-container mr-4 mt-1 p-1">
-          <input
-            type="search"
-            name="search-bar"
-            className="search-bar m-1 border rounded-md h-8 border-black"
-            value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-            }}
-          />
-          <button
-            className="search-btn bg-green-500 h-8 px-1 text-base text-center cursor-pointer border rounded-md border-black"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
-        </div>
+    <div className="body-container px-20">
+      <div className="flex search-container mr-4 mt-4 items-center ">
+        <input
+          type="search"
+          name="search-bar"
+          className="search-bar m-1 border rounded-md py-1 px-2 border-gray-600"
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+          }}
+        />
         <button
-          className="filter-btn border border-solid border-black rounded-lg h-8 w-52 cursor-pointer text-center p-1 mt-3 bg-blue-100 text-base"
+          className="bg-gray-200 rounded-md py-1 px-4 text-base text-center cursor-pointer mx-2"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+        <button
+          className="rounded-md px-4 py-1 cursor-pointer text-center  bg-blue-500 text-white"
           onClick={handleClick}
         >
-          Top Rated Restaurant
+          Top Rated
         </button>
       </div>
-      <div className="restaurant-container grid my-10 mx-20 gap-8 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
+      <div className="restaurant-container grid my-10 gap-8 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
         {res.map((restaurants) => (
           <Link
             key={restaurants.info.id}
