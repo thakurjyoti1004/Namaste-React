@@ -5,11 +5,15 @@ const CategoryItemList = ({ categoryData }) => {
     <div className="m-2 text-left block justify-between">
       {categoryData?.itemCards.map((cardData) => {
         return (
-          <div className="flex flex-row my-2 items-center border-b-2 pb-4">
+          <div className="flex flex-row my-2 items-center border-b-2 pb-4 border-gray-400">
             <div className="w-[66%]">
-              <h3>BestSeller</h3>
-              <h2>{cardData.card.info.name}</h2>
-              <p>₹ {cardData.card.info.defaultPrice / 100}</p>
+              <h2 className="font-bold">{cardData.card.info.name}</h2>
+              <p className="font-bold">
+                ₹{" "}
+                {cardData.card.info.defaultPrice
+                  ? cardData.card.info.defaultPrice / 100
+                  : cardData.card.info.price / 100}
+              </p>
               <p>{cardData.card.info.description}</p>
             </div>
             <div className="ml-auto w-[12%] h-20 ">
