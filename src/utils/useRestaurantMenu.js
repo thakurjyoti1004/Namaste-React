@@ -15,7 +15,6 @@ const useRestaurantMenu = (resId) => {
         resId
     );
     const jsonData = await fetchedData.json();
-console.log(jsonData.data,"menu");
     setResMenuList(jsonData.data);
   };
   return resMenuList;

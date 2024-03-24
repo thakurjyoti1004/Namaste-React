@@ -21,11 +21,16 @@ const RestaurantMenu = () => {
   const { carousel } =
     resMenuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
-  console.log(
-    resMenuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-      ?.card,
-    "accordian Data"
+
+  const categoryItemsData =
+    resMenuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
+  const categoryItems = categoryItemsData.filter(
+    (items) =>
+      items?.card?.["card"]?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
+  console.log(categoryItems, 11);
   return (
     <div className="menu-container block m-5 justify-center mr-4">
       <h1 className="font-bold ml-24 mt-2">{name}</h1>
@@ -57,7 +62,12 @@ const RestaurantMenu = () => {
             </div>
           );
         })}
-      <RestaurantCategory />
+      {categoryItems.map((category, idx) => (
+        <RestaurantCategory
+          key={category?.card?.card?.itemCards?.card?.info?.id}
+          categoryData={category?.card?.card}
+        />
+      ))}
     </div>
   );
 };
