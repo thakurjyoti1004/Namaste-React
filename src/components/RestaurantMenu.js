@@ -30,7 +30,6 @@ const RestaurantMenu = () => {
     }
     return [];
   };
-
   const categoryItemsData =
     resMenuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
@@ -39,6 +38,48 @@ const RestaurantMenu = () => {
       items?.card?.["card"]?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
+
+  const getItemPrice = (menuData) => {
+    if (
+      menuData &&
+      menuData.dish &&
+      menuData.dish.info &&
+      menuData.dish.info.defaultPrice
+    ) {
+      return menuData.dish.info.defaultPrice / 100;
+    } else if (
+      menuData &&
+      menuData.dish &&
+      menuData.dish.info &&
+      menuData.dish.info.price
+    ) {
+      return menuData.dish.info.price / 100;
+    }
+    if (
+      menuData &&
+      menuData.card &&
+      menuData.card.info &&
+      menuData.card.info.defaultPrice
+    ) {
+      return menuData.card.info.defaultPrice / 100;
+    } else if (
+      menuData &&
+      menuData.card &&
+      menuData.card.info &&
+      menuData.card.info.price
+    ) {
+      return menuData.card.info.price / 100;
+    }
+  };
+
+  const getImageId = (data) => {
+    if (data && data.dish && data.dish.info && data.dish.info.imageId) {
+      return data.dish.info.imageId;
+    } else if (data && data.card && data.card.info && data.card.info.imageId) {
+      return data.card.info.imageId;
+    }
+  };
+
   return (
     <div className="menu-container block m-5 justify-center mr-4">
       <h1 className="font-bold ml-24 mt-2">{name}</h1>
@@ -47,25 +88,23 @@ const RestaurantMenu = () => {
       <h1 className="font-bold ml-24">{name} Menu:</h1>
 
       {getRestaurantMenuData().map((list) => {
+        console.log(list.dish, list.card, "Menu Data");
         return (
           <div
-            className="menu-card flex flex-row justify-between border border-solid border-black my-3 mx-24 max-h-40 overflow-hidden"
-            key={list.dish.info.id}
+            className="menu-card flex flex-row justify-between border border-solid border-gray-300 rounded-lg my-3 mx-24 max-h-40 overflow-hidden"
+            key={list.dish ? list.dish.info.id : list.card.info.id}
           >
             <div className="menu-details p-4">
-              <h2 className="font-bold">{list.dish.info.name}</h2>
-              <h4 className="font-bold">
-                ₹{" "}
-                {list.dish.info.defaultPrice
-                  ? list.dish.info.defaultPrice / 100
-                  : list.dish.info.price / 100}
-              </h4>
+              <h2 className="font-bold">
+                {list.dish ? list.dish.info.name : list.card.info.name}
+              </h2>
+              <h4 className="font-bold">₹ {getItemPrice(list)}</h4>
               <p className="font-light">{list?.dish?.info?.description}</p>
             </div>
             <img
               src={
                 "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                list?.dish?.info?.imageId
+                getImageId(list)
               }
               alt="menu-img"
             />
