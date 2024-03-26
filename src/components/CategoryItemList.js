@@ -1,5 +1,4 @@
 const CategoryItemList = ({ categoryData }) => {
-  console.log(categoryData.itemCards[0]?.card?.info?.imageId, 55);
 
   return (
     <div className="m-2 text-left block justify-between">

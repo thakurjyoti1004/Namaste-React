@@ -6,6 +6,9 @@ import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  // lifting the state up //
+  const [index, setIndex] = useState("");
+  const [showAccordian, setShowAccrodian] = useState(false);
 
   // custom hook for fetching API //
   const resMenuList = useRestaurantMenu(resId);
@@ -17,12 +20,30 @@ const RestaurantMenu = () => {
     );
   }
 
-  const { name, cuisines, city } = resMenuList?.cards[0]?.card?.card?.info;
+  const name = resMenuList?.cards[2]?.card?.card?.info?.name;
+  const cuisines = resMenuList?.cards[2]?.card?.card?.info?.cuisines;
+  const city = resMenuList?.cards[2]?.card?.card?.info?.city;
+  console.log(resMenuList, name, "list");
 
   const getRestaurantMenuData = () => {
-    const { carousel, itemCards } =
-      resMenuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card;
+    const carousel =
+      resMenuList &&
+      resMenuList.cards[4] &&
+      resMenuList.cards[4].groupedCard &&
+      resMenuList.cards[4].groupedCard.cardGroupMap &&
+      resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR &&
+      resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1] &&
+      resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card?.card
+        .carousel;
+    const itemCards =
+      resMenuList &&
+      resMenuList.cards[4] &&
+      resMenuList.cards[4].groupedCard &&
+      resMenuList.cards[4].groupedCard.cardGroupMap &&
+      resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR &&
+      resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1] &&
+      resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card?.card
+        .itemCards;
     if (carousel && carousel.length) {
       return carousel;
     } else if (itemCards && itemCards.length) {
@@ -31,13 +52,24 @@ const RestaurantMenu = () => {
     return [];
   };
   const categoryItemsData =
-    resMenuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    resMenuList &&
+    resMenuList.cards[4] &&
+    resMenuList.cards[4].groupedCard &&
+    resMenuList.cards[4].groupedCard.cardGroupMap &&
+    resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR &&
+    resMenuList.cards[4].groupedCard.cardGroupMap.REGULAR.cards;
 
-  const categoryItems = categoryItemsData.filter(
-    (items) =>
-      items?.card?.["card"]?.["@type"] ===
-      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  );
+  const categoryItems =
+    categoryItemsData &&
+    categoryItemsData.filter(
+      (items) =>
+        items &&
+        items.card &&
+        items.card?.["card"] &&
+        items.card?.["card"]?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log(categoryItems, 455);
 
   const getItemPrice = (menuData) => {
     if (
@@ -83,12 +115,12 @@ const RestaurantMenu = () => {
   return (
     <div className="menu-container block m-5 justify-center mr-4">
       <h1 className="font-bold ml-24 mt-2">{name}</h1>
-      <h2 className="font-bold ml-24">{cuisines.join(", ")}</h2>
+      <h2 className="font-bold ml-24">{cuisines && cuisines.join(",")}</h2>
       <h3 className="font-bold ml-24">{city}</h3>
       <h1 className="font-bold ml-24">{name} Menu:</h1>
 
       {getRestaurantMenuData().map((list) => {
-        console.log(list.dish, list.card, "Menu Data");
+        console.log(list.dish, "dish", list.card, "Menu Data");
         return (
           <div
             className="menu-card flex flex-row justify-between border border-solid border-gray-300 rounded-lg my-3 mx-24 max-h-40 overflow-hidden"
@@ -99,7 +131,11 @@ const RestaurantMenu = () => {
                 {list.dish ? list.dish.info.name : list.card.info.name}
               </h2>
               <h4 className="font-bold">₹ {getItemPrice(list)}</h4>
-              <p className="font-light">{list?.dish?.info?.description}</p>
+              <p className="font-light">
+                {list && list.dish
+                  ? list.dish.info.description
+                  : list.card.info.description}
+              </p>
             </div>
             <img
               src={
@@ -112,9 +148,13 @@ const RestaurantMenu = () => {
         );
       })}
       {categoryItems.map((category, idx) => (
+        // controlled component- controlled by RestaurantMenu //
         <RestaurantCategory
-          key={category?.card?.card?.itemCards?.card?.info?.id}
-          categoryData={category?.card?.card}
+          key={idx}
+          idx={idx}
+          showAccordian={index === idx ? true : false}
+          setIndex={setIndex}
+          categoryData={category && category.card && category.card.card}
         />
       ))}
     </div>

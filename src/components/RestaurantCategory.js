@@ -1,11 +1,9 @@
 import { useState } from "react";
 import CategoryItemList from "./CategoryItemList";
 
-const RestaurantCategory = ({ categoryData }) => {
-  const [showAccordian, setShowAccordian] = useState(false);
-  console.log(categoryData, 22);
+const RestaurantCategory = ({ categoryData, showAccordian, setIndex,idx }) => {
   const handleAccordianOnClick = () => {
-    setShowAccordian(!showAccordian);
+    setIndex(idx);
   };
 
   return (
