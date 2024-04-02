@@ -148,7 +148,7 @@ const RestaurantMenu = () => {
         );
       })}
       {categoryItems.map((category, idx) => (
-        // controlled component- controlled by RestaurantMenu //
+        // controlled component- controlled by RestaurantMenu // 
         <RestaurantCategory
           key={idx}
           idx={idx}

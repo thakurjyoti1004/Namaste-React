@@ -1,3 +1,7 @@
+import { data } from "autoprefixer";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
+
 const RestaurantCard = (props) => {
   const { resData } = props;
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =

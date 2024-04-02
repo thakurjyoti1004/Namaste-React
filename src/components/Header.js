@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Logo from "../../logos/fooodLogo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+  const userName = useContext(UserContext);
 
   const handleLoginBtn = () => {
     loginBtn === "Login" ? setLoginBtn("Logout") : setLoginBtn("Login");
@@ -40,9 +42,10 @@ const Header = () => {
               {loginBtn}
             </button>
           </li>
-          <div className="p-3">
+          <li className="p-3">
             {onlineStatus === false ? <li>🔴 Offline</li> : <li>🔵 Online</li>}
-          </div>
+          </li>
+          <li className="p-3">{userName.userName}</li>
         </ul>
       </div>
     </div>

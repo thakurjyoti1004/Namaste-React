@@ -1,10 +1,13 @@
 const ContactUS = () => {
   return (
-    <div>
-      <h1>Contact Us Page</h1>
+    <div className="ml-[5%] mt-[5%]">
+      <h1 className="font-bold">Contact Us:</h1>
       <h2>
         For any kind of queries you can contact us on:
-        <a href="">chefcorner004@gmail.com</a>
+        <a href="" className="font-semibold ">
+          {" "}
+          chefcorner004@gmail.com.
+        </a>
       </h2>
     </div>
   );
